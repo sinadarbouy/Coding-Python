@@ -6,8 +6,22 @@
 # A[] = {1,2,3,7,5}
 # Output: 2 4
 
-# Third attempt:
+# Hash
 def subArraySum(arr, n, s):
+    dict1 = {}
+    curr_sum = 0
+    for i in range(n):
+        curr_sum = curr_sum + arr[i]
+        if curr_sum == s:
+            return [1, i + 1]
+        if curr_sum - s in dict1:
+            return [dict1[curr_sum - s] + 2, i + 1]
+        dict1[curr_sum] = i
+    return [-1]
+
+
+# Third attempt:
+def subArraySum3(arr, n, s):
     startIndex = 0
     sum = 0
     i = 0
@@ -71,6 +85,6 @@ def subArraySum2(arr, n, s):
 
 
 N = 5
-S = 125
+S = 12
 A = [1, 2, 3, 7, 5]
 print(subArraySum(A, N, S))
