@@ -28,7 +28,7 @@ class HomePageTest(unittest.TestCase):
             'gh-cart-icon'
         )
 
-        # just hoever
+        # just hover
         actions = ActionChains(self.driver)
         actions.move_to_element(shopping_cart_icon).perform()
 
