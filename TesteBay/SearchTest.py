@@ -8,8 +8,7 @@ class SearchTest(unittest.TestCase):
     @classmethod
     def setUp(self):
         # create a new Chrome session
-        self.driver = webdriver.Chrome(
-            ChromeDriverManager().install())
+        self.driver = webdriver.Chrome(ChromeDriverManager().install())
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
 
