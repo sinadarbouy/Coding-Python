@@ -1,4 +1,5 @@
 import unittest
+import time 
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
@@ -21,6 +22,9 @@ class HomePageTest(unittest.TestCase):
 
         actions = ActionChains(self.driver)
 
+        # wait for all elements to load in
+        time.sleep(1)
+        
         # accept cookies
         accept_cookie_button = self.driver.find_element_by_id("onetrust-accept-btn-handler")
         accept_cookie_button.click()
