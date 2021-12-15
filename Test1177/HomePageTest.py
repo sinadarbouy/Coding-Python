@@ -4,8 +4,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 
-# unittest.TestCase
-class HomePageTest:
+
+class HomePageTest(unittest.TestCase):
     @classmethod
     def setUp(self):
         # create a new Chrome session
@@ -23,15 +23,10 @@ class HomePageTest:
         )
         icon_search.click()
 
-        input_search = self.driver.find_element_by_name("q")
-        input_search.clear()
-        # enter search keyword and submit
-        input_search.send_keys("phones")
-        input_search3 = self.driver.find_element(
-            By.XPATH,
-            '//button[@name="q")]',
-        )
-        self.assertTrue(len(input_search) == 1)
+        input_search = self.driver.find_elements_by_name(
+            "q"
+        )  # for mobile and big screen
+        self.assertTrue(len(input_search) == 2)
 
     @classmethod
     def tearDown(self):
@@ -39,9 +34,5 @@ class HomePageTest:
         self.driver.quit()
 
 
-a = HomePageTest()
-a.setUp()
-a.test_search_field()
-
-# if __name__ == "__main__":
-#     unittest.main(verbosity=2)
+if __name__ == "__main__":
+    unittest.main(verbosity=2)
